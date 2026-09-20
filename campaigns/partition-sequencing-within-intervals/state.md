@@ -43,7 +43,7 @@ went from blocked to working on 2026-09-21 after the DSH restart.
 
 | Round | Mechanism / standalone literature scope | First discriminating check | Outcome | Record |
 |---|---|---|---|---|
-| — | — | — | — | no rounds yet |
+| 001 | A: corrected enforcer window (`r = ceil(B/2)`) | prepared candidate suite `check.py --candidate algorithm.py` over 16 injected cases | supported: suite passed, 59 target outputs, no counterexample | [rounds/001/round.md](rounds/001/round.md) |
 
 Planned mechanisms, each a separate round if counted: **A** corrected enforcer
 window (`r = ceil(B/2)`); **B** explicit odd-sum infeasible target with the
@@ -51,10 +51,12 @@ even-`B` gadget retained. A parameter or seed change is not a new row.
 
 ## Artifacts
 
-- `question.md` fixed; route hypotheses A and B recorded, A untested, B untried.
-- `work/contract.md`, `work/cases.json`, `work/check.py`, `work/preparation.md`
-  complete; `pyproject.toml` and `uv.lock` lock CPython 3.12.11 with
-  `ortools==9.15.6755`. `rounds/` empty, `reviews/` empty, `formal/` absent.
+- `question.md` fixed; route hypothesis A constructed and suite-passed,
+  hypothesis B untried.
+- `work/contract.md`, `work/cases.json`, `work/check.py`, `work/preparation.md`,
+  `work/algorithm.py`, `work/proof.md` current; `pyproject.toml` and `uv.lock`
+  lock CPython 3.12.11 with `ortools==9.15.6755`. `rounds/001/` holds the round
+  record and its retained suite output; `reviews/` empty; `formal/` absent.
 
 ## Checks
 
@@ -68,6 +70,11 @@ rejected; NO instances cover both parities of the total. Limits: at most 8
 distinct target outputs per instance, exhaustive source cross-check at most 20
 items, no bit-length bounds and no candidate correctness claim.
 
+Round 001 ran the candidate suite against `work/algorithm.py`: 16 instances, 59
+distinct valid target outputs through recovery, PASSED
+([retained output](rounds/001/candidate-suite.txt)). The general proof is
+`work/proof.md`; no oracle defect and no counterexample appeared.
+
 ## Review
 
 None. Independent review will use the `research_reviewer` child of the DSH
@@ -75,9 +82,7 @@ None. Independent review will use the `research_reviewer` child of the DSH
 
 ## Next action
 
-Prepare: fix the JSON encodings of both endpoints in `contract.md`, implement the
-independent source and target oracles with injected YES and NO cases, make
-`check.py --self-test` pass and commit the testing foundation. Round 1 then tests
-Mechanism A by exhaustive enumeration over small instances. No round may start
-before that commit, and the campaign session must run with this repository as its
-workspace.
+Verify: write an independent `work/verify.py` that re-implements the small-instance
+oracles without importing `check.py` or `algorithm.py`, exercise alternate valid
+target outputs, degenerate inputs and the NO correspondence, and record
+`work/verification.md`. Then request independent review.

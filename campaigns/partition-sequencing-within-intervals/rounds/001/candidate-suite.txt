@@ -1,0 +1,22 @@
+CP-SAT available=True version=9.15.6755
+candidate: campaigns/partition-sequencing-within-intervals/work/algorithm.py
+  single-element-no: source=NO target_feasible=False target_outputs_tested=1
+  pair-equal-yes: source=YES target_feasible=True target_outputs_tested=2
+  odd-total-no: source=NO target_feasible=False target_outputs_tested=1
+  even-total-no: source=NO target_feasible=False target_outputs_tested=1
+  single-item-is-half-yes: source=YES target_feasible=True target_outputs_tested=4
+  textbook-even-yes: source=YES target_feasible=True target_outputs_tested=8
+  all-equal-even-yes: source=YES target_feasible=True target_outputs_tested=8
+  all-equal-odd-no: source=NO target_feasible=False target_outputs_tested=1
+  even-total-no-gap: source=NO target_feasible=False target_outputs_tested=1
+  six-threes-yes: source=YES target_feasible=True target_outputs_tested=8
+  two-items-one-is-half-yes: source=YES target_feasible=True target_outputs_tested=4
+  odd-total-no-small: source=NO target_feasible=False target_outputs_tested=1
+  equal-pair-yes: source=YES target_feasible=True target_outputs_tested=2
+  even-total-no-duplicates: source=NO target_feasible=False target_outputs_tested=1
+  range-one-to-eight-yes: source=YES target_feasible=True target_outputs_tested=8
+  eight-ones-yes: source=YES target_feasible=True target_outputs_tested=8
+
+instances=16 target_outputs_tested=59
+
+CANDIDATE SUITE PASSED
