@@ -114,6 +114,18 @@ context yes; registered `research_reviewer`, `toolFilter`, delegation-depth cap,
 write confinement and separate model route all **no** — this session runs the
 `standard` preset, so those were instructions only.
 
+## Decisions
+
+- 2026-09-21, F4 closed by the user's scope decision: the active development line
+  upstream is `main`, whose model represents an empty time window as `Ok(0)` start
+  slots, i.e. a legal infeasible instance, matching this campaign's encoding. The
+  released `problemreductions 0.6.0` caveat therefore does not block integration and
+  mechanism B is not needed. Verified against both sources on 2026-09-21
+  (`main/src/models/misc/sequencing_within_intervals.rs` returns `Ok(0)` when
+  `d - l < r`; the 0.6.0 source asserts `r + l <= d` in its constructor). No
+  artifact changes: `work/proof.md` keeps the caveat as a statement about the
+  released model only.
+
 ## Write
 
 Manuscript written over the reviewed result and compiled with Typst 0.15.1:
