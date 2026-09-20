@@ -1,0 +1,101 @@
+{
+  "description": "Injected source instances with independently established ground truth. Each witness in expect.witnesses is hand-checkable from the sizes: it must sum to half the total. check.py --self-test verifies every stored witness and re-derives has_solution with the oracle.",
+  "cases": [
+    {
+      "name": "single-element-no",
+      "note": "one item of size 4; half of 4 is 2, and no subset of a single size-4 item sums to 2",
+      "instance": {"sizes": [4]},
+      "expect": {"has_solution": false, "witnesses": []}
+    },
+    {
+      "name": "pair-equal-yes",
+      "note": "total 2, half 1; either single item is a witness",
+      "instance": {"sizes": [1, 1]},
+      "expect": {"has_solution": true, "witnesses": [[0], [1]]}
+    },
+    {
+      "name": "odd-total-no",
+      "note": "total 3 is odd, so no equal split exists",
+      "instance": {"sizes": [1, 2]},
+      "expect": {"has_solution": false, "witnesses": []}
+    },
+    {
+      "name": "even-total-no",
+      "note": "total 6, half 3; the achievable subset sums are 1, 4, 5, 1, 2, 5, 6",
+      "instance": {"sizes": [1, 1, 4]},
+      "expect": {"has_solution": false, "witnesses": []}
+    },
+    {
+      "name": "single-item-is-half-yes",
+      "note": "total 6, half 3; the item of size 3 is a witness",
+      "instance": {"sizes": [1, 2, 3]},
+      "expect": {"has_solution": true, "witnesses": [[2]]}
+    },
+    {
+      "name": "textbook-even-yes",
+      "note": "total 10, half 5; 3 + 2 and 1 + 4 both work",
+      "instance": {"sizes": [3, 1, 2, 4]},
+      "expect": {"has_solution": true, "witnesses": [[0, 2], [1, 3]]}
+    },
+    {
+      "name": "all-equal-even-yes",
+      "note": "total 8, half 4; any two items work",
+      "instance": {"sizes": [2, 2, 2, 2]},
+      "expect": {"has_solution": true, "witnesses": [[0, 1], [2, 3]]}
+    },
+    {
+      "name": "all-equal-odd-no",
+      "note": "total 9 is odd",
+      "instance": {"sizes": [3, 3, 3]},
+      "expect": {"has_solution": false, "witnesses": []}
+    },
+    {
+      "name": "even-total-no-gap",
+      "note": "total 8, half 4; subsets reach 1, 2, 3, 5, 6, 7, 8 but never 4",
+      "instance": {"sizes": [1, 1, 1, 5]},
+      "expect": {"has_solution": false, "witnesses": []}
+    },
+    {
+      "name": "six-threes-yes",
+      "note": "total 18, half 9; any three items work",
+      "instance": {"sizes": [3, 3, 3, 3, 3, 3]},
+      "expect": {"has_solution": true, "witnesses": [[0, 1, 2], [3, 4, 5]]}
+    },
+    {
+      "name": "two-items-one-is-half-yes",
+      "note": "total 10, half 5; the item of size 5 alone is a witness",
+      "instance": {"sizes": [2, 3, 5]},
+      "expect": {"has_solution": true, "witnesses": [[2]]}
+    },
+    {
+      "name": "odd-total-no-small",
+      "note": "total 7 is odd",
+      "instance": {"sizes": [1, 2, 4]},
+      "expect": {"has_solution": false, "witnesses": []}
+    },
+    {
+      "name": "equal-pair-yes",
+      "note": "total 14, half 7; either item alone works",
+      "instance": {"sizes": [7, 7]},
+      "expect": {"has_solution": true, "witnesses": [[0], [1]]}
+    },
+    {
+      "name": "even-total-no-duplicates",
+      "note": "total 18, half 9; the reachable sums are 2,3,5,6,7,8,10,11,13,16 and never 9",
+      "instance": {"sizes": [5, 5, 3, 3, 2]},
+      "expect": {"has_solution": false, "witnesses": []}
+    },
+    {
+      "name": "range-one-to-eight-yes",
+      "note": "total 36, half 18; 8 + 7 + 3 and 8 + 6 + 4 and many others",
+      "instance": {"sizes": [1, 2, 3, 4, 5, 6, 7, 8]},
+      "expect": {"has_solution": true, "witnesses": [[2, 6, 7], [3, 5, 7]]}
+    },
+    {
+      "name": "eight-ones-yes",
+      "note": "total 8, half 4; any four items work, and the constructed target has nine tasks",
+      "instance": {"sizes": [1, 1, 1, 1, 1, 1, 1, 1]},
+      "expect": {"has_solution": true, "witnesses": [[0, 1, 2, 3]]}
+    }
+  ]
+}

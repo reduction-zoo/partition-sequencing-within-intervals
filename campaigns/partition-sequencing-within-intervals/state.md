@@ -51,17 +51,22 @@ even-`B` gadget retained. A parameter or seed change is not a new row.
 
 ## Artifacts
 
-- `question.md` fixed; route hypotheses A and B recorded and untested.
-- `work/` empty. `rounds/` empty. `reviews/` empty. `formal/` absent: no
-  formalization is requested.
+- `question.md` fixed; route hypotheses A and B recorded, A untested, B untried.
+- `work/contract.md`, `work/cases.json`, `work/check.py`, `work/preparation.md`
+  complete; `pyproject.toml` and `uv.lock` lock CPython 3.12.11 with
+  `ortools==9.15.6755`. `rounds/` empty, `reviews/` empty, `formal/` absent.
 
 ## Checks
 
-None yet. Prepare owns the first testing foundation: `work/contract.md`,
-`work/cases.json`, `work/check.py` with `--self-test` and `--candidate`, plus the
-committed lockfile once Python is used. Cases must include NO instances for both
-parities of the total, because that is the failure the removed implementation
-exhibited.
+Testing foundation in place and self-tested (2026-09-21, before any candidate was
+constructed): `uv run --locked python campaigns/partition-sequencing-within-intervals/work/check.py --self-test`
+passes. Independent source oracle = subset-sum dynamic program cross-checked
+against exhaustive enumeration; independent target oracle = subset dynamic
+program and an independent OR-Tools CP-SAT encoding, which must agree. 16 injected
+cases, 14 hand-checkable oracle cases and 18 deliberately malformed fixtures
+rejected; NO instances cover both parities of the total. Limits: at most 8
+distinct target outputs per instance, exhaustive source cross-check at most 20
+items, no bit-length bounds and no candidate correctness claim.
 
 ## Review
 
