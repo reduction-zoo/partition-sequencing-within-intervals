@@ -1,0 +1,17 @@
+# Python / uv
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Lean / Lake
+.lake/
+lake-packages/
+
+# macOS
+.DS_Store
+
+# Reproducible bulk outputs are excluded only with an explicit pattern added
+# when the family appears. For each omitted artifact keep its exact input,
+# generator revision, dependency lock, working directory and command in the
+# round or `work/evidence/` directory that produced it.

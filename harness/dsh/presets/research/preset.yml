@@ -1,0 +1,5 @@
+name: Research
+description: >-
+  Reduction research: the standard agent plus a registered independent reviewer
+  subagent that cannot delegate, and no fresh-agent round loop.
+order: 40
