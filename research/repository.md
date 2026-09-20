@@ -125,8 +125,12 @@ outputs; adding an ignore rule does not remove already committed files.
 When remote creation is authorized, create a private repository unless the user
 requests public visibility, and push the existing local history. Use a stable
 question slug and a README that states the exact result and remaining checks.
-For a history-and-proof archive, disable Issues, Discussions, Wiki and Actions
-where applicable. Do not add contribution workflows or automatic deployment.
+For a history-and-proof archive, keep **Issues enabled** and disable Discussions,
+Wiki, Projects and Actions: Issues are the channel for questions about an archived
+result. Confirm the created repository's settings (`has_issues` true, the other
+three false, Actions disabled) instead of assuming platform defaults, and match
+the existing archives in the destination organization. Do not add contribution
+workflows or automatic deployment.
 
 Record a solution on the board with its repository URL, full result commit,
 model/version, date and documented verification scope. A repository or passing
