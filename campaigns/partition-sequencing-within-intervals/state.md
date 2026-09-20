@@ -101,8 +101,13 @@ upstream model `problemreductions 0.6.0` — recorded in `work/proof.md` as an
 integration caveat, not a theorem change. The construction and recovery code were
 not touched, so the earlier suites and verification remain valid.
 
-Focused re-review of the repaired passages: **pending** at the time of this
-update.
+Focused re-review of the repaired passages:
+[reviews/01-independent/review-followup.md](reviews/01-independent/review-followup.md)
+decided **advance** and confirmed F1–F3 repaired, F4 correctly scoped outside the
+theorem, and every candidate, test and evidence file byte-identical across
+`9653daa..1d2b5ae`, so the earlier suite and verification still apply. Its new
+finding **F5** (do not present the derived ceiling reading as the book's own
+notation) was applied as a wording fix in `work/proof.md`.
 
 Isolation actually in force for review 01 (recorded by the reviewer): fresh
 context yes; registered `research_reviewer`, `toolFilter`, delegation-depth cap,

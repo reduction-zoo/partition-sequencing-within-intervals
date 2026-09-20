@@ -41,8 +41,12 @@ remains schedulable and the two remaining blocks have unequal lengths `m` and
 removed implementation (PR #1052's deleted text used `h = ⌊S/2⌋` with enforcer
 `r = h`, `d = h + 1`). The quoted Garey & Johnson text is self-consistent and
 already forces the ceiling: for even `B` it asserts `d(t̄) = r(t̄) + 1` with
-`r(t̄) = [B/2]`, which requires `[(B+1)/2] = B/2 + 1`, that is `[x] = ⌈x⌉`; for odd
-`B` both brackets then round up and `r(t̄) = d(t̄)`. Mechanism A is therefore the
+`r(t̄) = [B/2]`, which requires `[(B+1)/2] = B/2 + 1`, and for odd `B` it asserts
+that the enforcer cannot be scheduled, which for a unit-length task means
+`r(t̄) = d(t̄)`. With integer `B`, both assertions hold exactly under the rounding
+convention `[x] = ⌈x⌉`; the book's own bracket definition was not available to
+check, so this is the reading forced by the quoted assertions rather than a
+citation of the notation. Mechanism A is therefore the
 textbook window transcribed correctly, not a correction of the textbook, and the
 window used here is re-derived above rather than copied.
 
