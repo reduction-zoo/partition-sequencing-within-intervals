@@ -43,7 +43,7 @@ went from blocked to working on 2026-09-21 after the DSH restart.
 
 | Round | Mechanism / standalone literature scope | First discriminating check | Outcome | Record |
 |---|---|---|---|---|
-| 001 | A: corrected enforcer window (`r = ceil(B/2)`) | prepared candidate suite `check.py --candidate algorithm.py` over 16 injected cases | supported: suite passed, 59 target outputs, no counterexample | [rounds/001/round.md](rounds/001/round.md) |
+| 001 | A: corrected enforcer window (`r = ceil(B/2)`) | prepared candidate suite `check.py --candidate algorithm.py`, then independent `verify.py` | supported: suite passed (59 target outputs) and independent verification passed (52 instances, 153 target outputs), no counterexample | [rounds/001/round.md](rounds/001/round.md), [work/verification.md](work/verification.md) |
 
 Planned mechanisms, each a separate round if counted: **A** corrected enforcer
 window (`r = ceil(B/2)`); **B** explicit odd-sum infeasible target with the
@@ -72,8 +72,12 @@ items, no bit-length bounds and no candidate correctness claim.
 
 Round 001 ran the candidate suite against `work/algorithm.py`: 16 instances, 59
 distinct valid target outputs through recovery, PASSED
-([retained output](rounds/001/candidate-suite.txt)). The general proof is
-`work/proof.md`; no oracle defect and no counterexample appeared.
+([retained output](rounds/001/candidate-suite.txt)). Independent verification
+then passed with separately implemented oracles: 52 instances, 153 target outputs
+(113 schedules, 40 no-solution answers), seed 20260921
+([report](work/verification.md), [run](work/evidence/verification-run.txt)). The
+general proof is `work/proof.md`; no oracle defect and no counterexample
+appeared.
 
 ## Review
 
@@ -82,7 +86,9 @@ None. Independent review will use the `research_reviewer` child of the DSH
 
 ## Next action
 
-Verify: write an independent `work/verify.py` that re-implements the small-instance
-oracles without importing `check.py` or `algorithm.py`, exercise alternate valid
-target outputs, degenerate inputs and the NO correspondence, and record
-`work/verification.md`. Then request independent review.
+Request independent review of the complete candidate (executable F and G, general
+proof, prepared suite and independent verification) per
+`reviews/01-independent/`. This session runs the `standard` DSH preset and has no
+registered `research_reviewer`, so the review is spawned through the generic
+`subagent` tool with the review charter as its instructions; the review must
+record which isolation mechanisms were actually in force.
