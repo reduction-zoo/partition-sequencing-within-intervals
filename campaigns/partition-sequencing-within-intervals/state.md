@@ -81,14 +81,36 @@ appeared.
 
 ## Review
 
-None. Independent review will use the `research_reviewer` child of the DSH
-`research` preset once a complete candidate with a general proof exists.
+Independent review 01 is recorded in
+[reviews/01-independent/review.md](reviews/01-independent/review.md) with its own
+checker and transcript. Decision: **advance**, with correctness supported by the
+general proof plus the reviewer's own exhaustive checks (all valid target outputs
+enumerated on 2 721 small instances, 378 670 schedules, every one with the
+enforcer pinned and the pre-enforcer set summing to `B/2`). Novelty: the theorem
+is Garey & Johnson `[SS1]` Theorem 3.8; no new classification. Significance: meets
+the board's reconstruction criteria, with Lemma 3's recovery obligation for every
+valid target output as the addition over the textbook decision proof.
+
+Findings and disposition, all sentence-level: **F1** Lemma 3's measure step needed
+the integrality premise — fixed; **F2** recovery output bit size was stated as
+`O(n)` where the fixed encoding gives `Θ(n log n)` bits — fixed; **F3** the
+provenance sentence over-attributed the defect to the issue text, which is
+self-consistent and forces the ceiling — fixed; **F4** the odd-`B` empty-window
+enforcer is legal under the fixed question but not representable by the released
+upstream model `problemreductions 0.6.0` — recorded in `work/proof.md` as an
+integration caveat, not a theorem change. The construction and recovery code were
+not touched, so the earlier suites and verification remain valid.
+
+Focused re-review of the repaired passages: **pending** at the time of this
+update.
+
+Isolation actually in force for review 01 (recorded by the reviewer): fresh
+context yes; registered `research_reviewer`, `toolFilter`, delegation-depth cap,
+write confinement and separate model route all **no** — this session runs the
+`standard` preset, so those were instructions only.
 
 ## Next action
 
-Request independent review of the complete candidate (executable F and G, general
-proof, prepared suite and independent verification) per
-`reviews/01-independent/`. This session runs the `standard` DSH preset and has no
-registered `research_reviewer`, so the review is spawned through the generic
-`subagent` tool with the review charter as its instructions; the review must
-record which isolation mechanisms were actually in force.
+Request the focused re-review of the F1–F3 repairs (F4 is a recorded caveat), then
+proceed to the Write stage: a Typst manuscript over the reviewed result, compiled
+and inspected page by page.

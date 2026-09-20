@@ -1,0 +1,14 @@
+candidate: /Users/xiweipan/Codes/reduction-zoo/partition-sequencing-within-intervals/campaigns/partition-sequencing-within-intervals/work/algorithm.py
+instances: 2810 (exhaustive: 2721)
+
+note: check2: unrestricted search equals permutation enumeration on 5 tiny instances
+note: check1: forward output equals stated construction on 2810 instances
+note: check3: all 378670 valid schedules over 2721 exhaustively enumerated instances have sum(W) = B/2
+note: check5: candidate recovery matched reviewer W on 420 schedules and 280 no_solution answers
+note: scale n=10: max value bits=11, fields=33, approx output bits=363
+note: scale n=1000: max value bits=25, fields=3003, approx output bits=75075
+note: scale n=20000: max value bits=33, fields=60003, approx output bits=1980099
+forward subprocess calls: 2812
+recovery subprocess calls: 702
+
+REVIEWER CHECKS PASSED
