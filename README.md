@@ -30,11 +30,23 @@ rule, not a new complexity classification.
 
 ## Status
 
-Setup only. The question, the documented failure of the previous implementation,
-the route hypothesis and the screening record are committed; no test,
-construction or proof exists yet, so nothing here is a mathematical result and
-no claim is verified. The next milestone is the Prepare testing foundation,
-committed before any candidate rule is constructed.
+Complete, reviewed reconstruction, awaiting expert review. The rule is
+executable (`work/algorithm.py`), the general argument is `work/proof.md`, the
+testing foundation and its self-test are in `work/check.py` and
+`work/preparation.md`, independent verification is in `work/verify.py` and
+`work/verification.md`, the independent reviews are under
+`reviews/01-independent/`, and the compiled manuscript is
+`work/manuscript.pdf` (source `work/manuscript.typ`).
+
+Claim: for every legal Partition instance and every valid Sequencing Within
+Intervals output of the constructed instance, recovery returns a subcollection
+summing to half the total; the target is infeasible exactly when the source has no
+witness. The classification is the known textbook result; the contribution is the
+rule, its recovery obligation and finite evidence including infeasible instances.
+
+Remaining checks: expert review. Not claimed: novelty of the classification, and
+an empty-window representation compatible with the released upstream model
+`problemreductions 0.6.0` (recorded in `work/proof.md`).
 
 ## Layout
 

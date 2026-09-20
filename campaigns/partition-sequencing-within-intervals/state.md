@@ -114,8 +114,18 @@ context yes; registered `research_reviewer`, `toolFilter`, delegation-depth cap,
 write confinement and separate model route all **no** — this session runs the
 `standard` preset, so those were instructions only.
 
-## Next action
+## Write
 
-Request the focused re-review of the F1–F3 repairs (F4 is a recorded caveat), then
-proceed to the Write stage: a Typst manuscript over the reviewed result, compiled
-and inspected page by page.
+Manuscript written over the reviewed result and compiled with Typst 0.15.1:
+`work/manuscript.typ` using `work/report.typ`, producing `work/manuscript.pdf`
+(5 pages), with every page rendered and inspected. Finite evidence is reported in
+appendix A separately from the proof.
+
+## Completion
+
+Status: **ready_for_expert_review**. Executable F and G, their general proof,
+passing prepared and independent checks, an independent advance review with a
+focused follow-up on the repairs, and the compiled, page-inspected manuscript all
+exist and agree. This is an agent assessment, not human certification, and expert
+review plus the Garey & Johnson source text remain outstanding. No formal
+verification was requested.
