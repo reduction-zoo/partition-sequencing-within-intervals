@@ -44,6 +44,9 @@ summing to half the total; the target is infeasible exactly when the source has 
 witness. The classification is the known textbook result; the contribution is the
 rule, its recovery obligation and finite evidence including infeasible instances.
 
+Model provenance: produced by a DSH agent session on the `deepseek-flash`
+route, whose catalog name in the harness is `DeepSeek-V41-Flash`.
+
 Remaining checks: expert review. Not claimed: novelty of the classification, and
 an empty-window representation compatible with the released upstream model
 `problemreductions 0.6.0` (recorded in `work/proof.md`).
