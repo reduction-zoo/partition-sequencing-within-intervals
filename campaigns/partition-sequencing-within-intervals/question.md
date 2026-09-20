@@ -66,6 +66,7 @@ last-literature-check: 2026-09-21
 | Garey & Johnson, *Computers and Intractability* (1979), Chapter 3, Theorem 3.8, p.70, as transcribed in issue #205 | Arbitrary Partition instance with total `B` | Sequencing Within Intervals is NP-complete; local replacement plus one "enforcer" task | The campaign must supply an executable F and G, a general proof and bounds; the book text is not freely available here, and the transcription's enforcer formula is exactly what the removed implementation got wrong |
 | Upstream audit issue #1006 and its comment of 2026-04-06 | ~40 random NO instances, seed 42 | `Partition → SequencingWithinIntervals` was first listed SOUND, then corrected to **UNSOUND**: release `floor(S/2)` with deadline `ceil((S+1)/2)` leaves the enforcer schedulable for odd `S`, giving asymmetric blocks; 28 of ~40 NO instances were wrongly schedulable | Documents the failure but supplies no corrected construction |
 | PR #1052 (merged 2026-04-17) | — | Removed eight unsound reductions, including this one; the problem models were retained | Leaves the edge absent; issue #205 was reopened for a correct re-implementation from literature (comment of 2026-04-14) |
+| Issue #205 body, current revision (read 2026-09-21) | The same transcription, plus an AI-generated summary and an even-`B` example | The summary states `r(t̄) = floor(B/2)` and `d(t̄) = ceil((B+1)/2)` and then asserts "when `B` is odd: `r(t̄) = d(t̄) = ceil(B/2)`", which is arithmetically false for that formula: odd `B = 2k+1` gives `r = k` and `d = k+1`, so the enforcer stays schedulable. Only the even-`B` case is exercised | The transcription contradicts itself at exactly the odd case that broke the removed implementation, so the enforcer window must be derived and proved here rather than copied |
 
 - Strongest applicable positive and negative results: the textbook positive
   result above, and the upstream NO-instance audit as the negative evidence.
@@ -83,7 +84,7 @@ last-literature-check: 2026-09-21
 | Search date and query | Primary URL and version | Theorem/page | Effect on target |
 |---|---|---|---|
 | 2026-09-18 (board import) | <https://github.com/CodingThrust/problem-reductions/issues/205> | Board record fixes the endpoints and the missing deliverable | Establishes the rule-completion gap |
-| 2026-09-21, GitHub API reads of issues #205, #1006 and PR #1052 | issue #205 (open, labels `rule`,`Good`); issue #1006 (closed, label `bug`); PR #1052 (merged) | Audit comment of 2026-04-06; removal list of PR #1052 | Confirms the target is open, the previous construction is removed as unsound, and the model is retained |
+| 2026-09-21, GitHub API reads of issues #205, #1006 and PR #1052, first through shell `curl` and then through the harness `web_fetch` once the proxy route was configured | issue #205 (open, labels `rule`,`Good`, milestone *Garey & Johnson*, `state_reason: reopened`, 8 comments); issue #1006 (closed, label `bug`); PR #1052 (merged) | Audit comment of 2026-04-06; removal list of PR #1052; the issue body's self-contradictory odd-`B` claim | Confirms the target is open, the previous construction is removed as unsound, and the model is retained |
 | 2026-09-21, `web_search` for the Hitting String target (a different candidate) | search index only | — | Used only to reject that other candidate; not evidence for this target |
 
 - Equivalent formulations and synonymous statements checked: the board's target
@@ -98,7 +99,10 @@ last-literature-check: 2026-09-21
   target is open upstream and the edge is absent. Garey & Johnson's book is not
   freely available from this session, so the theorem statement and the exact
   enforcer formula could not be read at the source; the transcription in issue
-  #205 is treated as untrusted, because that formula is the failure's origin.
+  #205 is treated as untrusted, because that formula is the failure's origin and
+  because the issue's own summary contradicts it for odd totals. The issue was
+  re-read through the harness `web_fetch` after the proxy fix, so the current
+  revision, labels, milestone and `state_reason: reopened` are confirmed.
   Two unrelated AI-generated comments on #205 discuss a different problem and
   carry no evidence.
 

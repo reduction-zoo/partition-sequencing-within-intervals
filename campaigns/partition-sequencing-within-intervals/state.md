@@ -31,13 +31,13 @@ different theorem is a new campaign.
 | lean / lake | 4.34.0 / 5.0.0 | `~/.elan/bin` | ok |
 | Comparator / nanoda / lean4checker | absent | — | pending; blocks final formal certification only |
 | `sci-brain:how-to-technical-writing` | installed skill | `~/.agents/skills/how-to-technical-writing` | ok |
-| `web_fetch` for primary sources | blocked | — | machine DNS runs in Shadowrocket fake-ip mode, so hostnames answer with RFC 2544 addresses (198.18.0.0/15) and DSH's public-fetch guard rejects them. `$DSH_HOME/.env` now sets `HTTP_PROXY`/`HTTPS_PROXY=http://127.0.0.1:1082`; takes effect after a DSH restart. Until then use shell `curl`, which routes through the system proxy |
-| Primary-source access via shell `curl` | works (HTTP 200) | — | used to read issues #205, #1006 and PR #1052 on 2026-09-21 |
+| `web_fetch` for primary sources | works (HTTP 200) | via `http://127.0.0.1:1082` | was blocked: this machine resolves DNS in Shadowrocket fake-ip mode, so hostnames answer with RFC 2544 addresses (198.18.0.0/15) and DSH's public-fetch guard rejected them. `$DSH_HOME/.env` now sets `HTTP_PROXY`/`HTTPS_PROXY`, DSH was restarted, and `web_fetch` of the issue #205 API succeeded on 2026-09-21. Loopback stays direct |
+| Primary-source access via shell `curl` | works (HTTP 200) | — | used before the restart to read issues #205, #1006 and PR #1052 on 2026-09-21; still a fallback |
 | Reviewer registration | DSH `research` preset, tool `research_reviewer` | `harness/dsh/presets/research` | installed; mount not yet observed in a session |
 
 Re-probe when the environment changes and record the delta here rather than
-relying on this table. The DSH restart is itself such a change: re-probe
-`web_fetch` afterwards.
+relying on this table. The proxy fix is already recorded as a delta: `web_fetch`
+went from blocked to working on 2026-09-21 after the DSH restart.
 
 ## Round table
 
